@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.0.5312 report, generated Fri Mar 03 14:21:32 CET 2017 -->
+
+<report>
+  <stats>
+    <packages value="1"/>
+    <classes value="2"/>
+    <methods value="13"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="50%  (1/2)"/>
+      <coverage type="method, %" value="77%  (10/13)"/>
+      <coverage type="block, %" value="27%  (93/347)"/>
+
+      <package name="calendario">
+        <coverage type="class, %" value="50%  (1/2)"/>
+        <coverage type="method, %" value="77%  (10/13)"/>
+        <coverage type="block, %" value="27%  (93/347)"/>
+      </package>
+    </all>
+  </data>
+</report>

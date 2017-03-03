@@ -1,0 +1,90 @@
+<project name = "JunitTest" default = "all" basedir = ".">
+   <property name = "bindir" location = "bin" />
+   <property name = "bin-testdir" location = "bin_test" />
+    <property name = "resultdir" location = "reports" />
+   <property name = "srcdir" location = "src" />
+   <property name = "src-testdir" location = "src_test" />
+   <property name="test.reports.des" location="${basedir}/reports-junit"/>
+   <property name = "full-compile" value = "true" />
+	
+	  <path id="emma.lib" >
+        <fileset dir="${basedir}/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+	
+   <path id = "classpath.base"/>
+	
+   <path id = "classpath.bin">
+      <pathelement location = "lib/junit-4.12.jar" />
+      <pathelement location = "${bindir}" />
+      <pathelement location = "${srcdir}" />
+      <path refid = "classpath.base" />
+   </path>
+	
+	<path id="classpath.test">
+    <pathelement location="lib/junit-4.12.jar"/>
+    <pathelement location="lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${bindir}"/>
+  </path>
+
+	
+	
+   <target name = "clean" >
+      <delete verbose = "${full-compile}">
+         <fileset dir = "${bindir}" includes = "**/*.class" />
+      </delete>
+   </target>
+	
+   <target name = "compile-src" depends = "clean">
+      <javac srcdir = "${srcdir}" destdir = "${bindir}" 
+         verbose = "${full-compile}">
+         <classpath refid = "classpath.bin"/>
+      </javac>
+   </target>
+   
+    <target name = "compile-test" depends = "compile-src">
+      <javac srcdir = "${src-testdir}" destdir = "${bin-testdir}" 
+         verbose = "${full-compile}">
+         <classpath refid = "classpath.bin"/>
+      </javac>
+   </target>
+   
+	 <!-- ~~~~~~~~~~~~~~~~~Junit~~~~~~~~~~~~~~~~~~~ -->
+   <target name = "test" depends = "compile-test">
+   <junit haltonfailure="no" showoutput="yes" printsummary="true">
+   
+    <formatter type="plain" usefile="true"/>
+    <formatter type="xml"/>
+         <classpath>
+          <path refid="classpath.test"/>
+		  <pathelement location="${src-testdir}"/>
+          <pathelement location="${bin-testdir}"/>
+        </classpath>
+         <formatter type = "brief" usefile = "false" />
+         <test name = "calendario.TestWhiteBox" />
+		  <batchtest todir="${test.reports.des}" fork="true">
+                
+            </batchtest> 
+		   <jvmarg value="-XX:-UseSplitVerifier"/>
+      </junit>
+	   
+   </target>
+   
+   
+   
+       <target name="junit-tests-report">
+        <junitreport todir="${test.reports.des}">
+            <fileset dir="${test.reports.des}">
+                <include name="TEST-*.xml"/>
+           </fileset>
+
+           <report format="frames" todir="${test.reports.des}/junit_reports"/>
+       </junitreport>
+    </target> 
+   
+
+<target name="all" depends="clean, compile-src, compile-test, test, junit-tests-report"/>
+   
+</project>
