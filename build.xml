@@ -4,7 +4,7 @@
     <property name="build.sources.dir" location="${basedir}/src"/>    <!-- cartella con le classi .java -->
     <property name="build.sources.des" location="${basedir}/bin"/> <!-- cartella con i file .class -->
     <property name="test.sources.dir" location="${basedir}/src_test"/> <!-- cartella con le classi test .java -->
-    <property name="test.sources.des" location="${basedir}/bin_test"/> <!-- cartella con i test.java -->
+    <property name="test.sources.des" location="${basedir}/bin_test"/> <!-- cartella con i test .class -->
     <property name="test.reports.des" location="${basedir}/reports-junit"/>
     <property name="emma.sources.des" location="${basedir}/bin/classes_emma"/>
     <property name="emma.reports.des" location="${basedir}/reports-emma"/>
@@ -90,8 +90,8 @@
             <classpath>
                 <pathelement location="${basedir}/lib/junit-4.12.jar"/>
 				<pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
-                <pathelement location="${build.sources.des}"/>  
-                <pathelement location="${emma.sources.des}"/>                
+                <pathelement location="${build.sources.des}"/>  <!-- cartella con i file .class -->
+                <pathelement location="${emma.sources.des}"/>   <!-- cartella con i file .class di emma -->             
                 <path refid="emma.lib" />
             </classpath>
  
