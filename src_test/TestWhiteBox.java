@@ -18,7 +18,7 @@ public class TestWhiteBox {
 	
 	@Test
 	public void testCalendWB1() {
-		ass.assertEquals(Calendario.calend(29,"gennaio",2011),"Sabato");
+		ass.assertEquals(Calendario.calend(29,"gennaio",2011),"Sabat");
 	}
 	@Test
 	public void testCalendWB2() {
