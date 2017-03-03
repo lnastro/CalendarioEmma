@@ -124,7 +124,7 @@
                 </fileset>
 
                 <txt outfile="${emma.final.reports.des}/coverage.txt" depth="package" columns="class,method,block,line,name" />
-                <xml outfile="${emma.final.reports.des}/coverage.xml" depth="package" />
+                <xml outfile="${emma.final.reports.des}/coverage.xml" depth="method" />
                 <html outfile="${emma.final.reports.des}/coverage.html" depth="method" columns="name,class,method,block,line" />
             </report>
         </emma>
